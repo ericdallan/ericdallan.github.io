@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eric Dallan — Technical Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet">
+    <style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #1a1a24;
+    --border: #2a2a38;
+    --accent: #6ee7b7;
+    --accent2: #818cf8;
+    --accent3: #f472b6;
+    --accent4: #fbbf24;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --mono: 'DM Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  .light {
+    --bg: #f1f4f8;
+    --surface: #ffffff;
+    --surface2: #e8ecf2;
+    --border: #c8d0dc;
+    --text: #0f172a;
+    --muted: #475569;
+    --accent: #059669;
+    --accent2: #4f46e5;
+    --accent3: #db2777;
+    --accent4: #d97706;
+  }
+  .light body::before {
+    background-image:
+      linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  }
+  /* fix ALL inline color:var(--muted) in light mode */
+  .light [style*="color:var(--muted)"],
+  .light [style*="color: var(--muted)"] { color: #475569 !important; }
+  .light .block p, .light .challenge-box p,
+  .light .demo-card-desc, .light .subtitle { color: #334155 !important; }
+  .light .sa-card [style*="color:var(--muted)"] { color: #475569 !important; }
+  /* fix inline hardcoded dark colors */
+  .light [style*="#94a3b8"] { color: #334155 !important; }
+
+  /* theme toggle — pill with two segments */
+  .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    gap: 2px;
+    transition: all 0.25s;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+  }
+  .theme-toggle .t-opt {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--muted);
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .theme-toggle .t-opt.active {
+    background: var(--accent);
+    color: #fff;
+    font-weight: 500;
+  }
+  .light .theme-toggle .t-opt.active { color: #fff; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid noise texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(110,231,183,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110,231,183,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER */
+  header {
+    padding: 72px 0 56px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tag::before { content: '//'; opacity: 0.5; }
+
+  h1 {
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  h1 span { color: var(--accent); }
+
+  .subtitle {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ── NAV PILLS — sticky */
+  .nav-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    margin: 0 -24px;
+    padding: 10px 24px;
+    background: rgba(10,10,15,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+  .light .nav-wrapper {
+    background: rgba(241,244,248,0.88);
+  }
+  .nav {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .nav-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .nav-pill:hover, .nav-pill.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(110,231,183,0.07);
+  }
+  .light .nav-pill:hover, .light .nav-pill.active {
+    background: rgba(5,150,105,0.08);
+  }
+
+  /* ── CASE STUDY CARD */
+  .case {
+    margin-top: 64px;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  .case:nth-child(1) { animation-delay: 0.1s; }
+  .case:nth-child(2) { animation-delay: 0.2s; }
+  .case:nth-child(3) { animation-delay: 0.3s; }
+  .case:nth-child(4) { animation-delay: 0.4s; }
+
+  @keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .case-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+
+  .case-number {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    min-width: 28px;
+    padding-top: 4px;
+  }
+
+  .case-title-wrap { flex: 1; }
+
+  .case-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .case-title {
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .case-body {
+    border-left: 1px solid var(--border);
+    margin-left: 48px;
+    padding-left: 28px;
+  }
+
+  /* ── BLOCKS */
+  .block {
+    margin-bottom: 28px;
+  }
+
+  .block-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .block-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+    max-width: 80px;
+  }
+
+  .block p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #94a3b8;
+    font-family: var(--mono);
+    font-weight: 300;
+  }
+
+  /* ── TECH STACK BADGES */
+  .stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .badge {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid;
+  }
+
+  /* ── FLOW DIAGRAM */
+  .flow {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-top: 4px;
+    overflow-x: auto;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+  .flow-node {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 8px 14px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  .flow-arrow {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    padding: 0 6px;
+  }
+  .flow-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  /* ── CHALLENGE BOX */
+  .challenge-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid;
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin-top: 4px;
+  }
+  .challenge-box p {
+    font-size: 13px;
+  }
+
+  /* ── RESULT METRICS */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-top: 4px;
+  }
+  .metric {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .metric-value {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+
+  /* ── DIVIDER */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 64px 0 0;
+  }
+
+  /* color themes per case */
+  .c1 .case-label, .c1 .block-label { color: var(--accent); }
+  .c1 .badge { border-color: rgba(110,231,183,0.3); color: var(--accent); background: rgba(110,231,183,0.05); }
+  .c1 .challenge-box { border-left-color: var(--accent); }
+  .c1 .metric-value { color: var(--accent); }
+  .c1 .flow-node { background: rgba(110,231,183,0.1); border: 1px solid rgba(110,231,183,0.25); color: var(--accent); }
+
+  .c2 .case-label, .c2 .block-label { color: var(--accent2); }
+  .c2 .badge { border-color: rgba(129,140,248,0.3); color: var(--accent2); background: rgba(129,140,248,0.05); }
+  .c2 .challenge-box { border-left-color: var(--accent2); }
+  .c2 .metric-value { color: var(--accent2); }
+  .c2 .flow-node { background: rgba(129,140,248,0.1); border: 1px solid rgba(129,140,248,0.25); color: var(--accent2); }
+
+  .c3 .case-label, .c3 .block-label { color: var(--accent3); }
+  .c3 .badge { border-color: rgba(244,114,182,0.3); color: var(--accent3); background: rgba(244,114,182,0.05); }
+  .c3 .challenge-box { border-left-color: var(--accent3); }
+  .c3 .metric-value { color: var(--accent3); }
+  .c3 .flow-node { background: rgba(244,114,182,0.1); border: 1px solid rgba(244,114,182,0.25); color: var(--accent3); }
+
+  .c4 .case-label, .c4 .block-label { color: var(--accent4); }
+  .c4 .badge { border-color: rgba(251,191,36,0.3); color: var(--accent4); background: rgba(251,191,36,0.05); }
+  .c4 .challenge-box { border-left-color: var(--accent4); }
+  .c4 .metric-value { color: var(--accent4); }
+  .c4 .flow-node { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); color: var(--accent4); }
+
+  /* ── LINK BUTTONS */
+  .link-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+  .link-btn {
+    font-family: var(--mono); font-size: 11px; padding: 7px 14px; border-radius: 6px;
+    border: 1px solid var(--border); color: var(--muted); text-decoration: none;
+    display: flex; align-items: center; gap: 6px; transition: all 0.2s;
+  }
+  .link-btn:hover { color: var(--text); border-color: #555; background: var(--surface); }
+  .link-btn.primary { border-color: rgba(110,231,183,0.4); color: var(--accent); background: rgba(110,231,183,0.05); }
+  .link-btn.primary:hover { background: rgba(110,231,183,0.1); }
+  .link-btn.indigo { border-color: rgba(129,140,248,0.4); color: var(--accent2); background: rgba(129,140,248,0.05); }
+  .link-btn.indigo:hover { background: rgba(129,140,248,0.1); }
+  .link-btn.orange { border-color: rgba(249,115,22,0.4); color: #f97316; background: rgba(249,115,22,0.05); }
+  .link-btn.orange:hover { background: rgba(249,115,22,0.1); }
+
+  /* ── DEMO SECTION */
+  .demo-section { margin-top: 64px; opacity: 0; transform: translateY(24px); animation: fadeUp 0.5s ease forwards; animation-delay: 0.05s; }
+  .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 16px; }
+  .demo-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 22px; text-decoration: none; transition: all 0.2s; display: block;
+  }
+  .demo-card:hover { border-color: #555; transform: translateY(-2px); }
+  .demo-card-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .demo-card-title { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+  .demo-card-desc { font-family: var(--mono); font-size: 11px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+  .demo-feats { display: flex; flex-wrap: wrap; gap: 5px; }
+  .demo-feat { font-family: var(--mono); font-size: 10px; padding: 3px 8px; border-radius: 4px; border: 1px solid var(--border); color: var(--muted); }
+  .demo-url { font-family: var(--mono); font-size: 10px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 6px; }
+  .demo-card.akun .demo-card-tag, .demo-card.akun .demo-url { color: #f97316; }
+  .demo-card.pos .demo-card-tag, .demo-card.pos .demo-url { color: var(--accent2); }
+  .demo-card.full .demo-card-tag, .demo-card.full .demo-url { color: var(--accent); }
+
+  /* ── CONNECT */
+  .connect-section { margin-top: 64px; border-top: 1px solid var(--border); padding-top: 48px; }
+  .connect-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .connect-btn {
+    font-family: var(--mono); font-size: 12px; padding: 9px 16px; border-radius: 8px;
+    border: 1px solid var(--border); color: var(--text); text-decoration: none;
+    display: flex; align-items: center; gap: 8px; transition: all 0.2s;
+  }
+  .connect-btn:hover { background: var(--surface2); border-color: #555; }
+
+  footer { padding: 32px 0 48px; text-align: center; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+
+  @media (max-width: 600px) {
+    .case-body { margin-left: 0; padding-left: 16px; }
+    .case-header { gap: 12px; }
+    .demo-grid { grid-template-columns: 1fr; }
+  }
+</style>
+  </head>
+  <body>
+
+    <div class="container">
+      <button class="theme-toggle" id="themeBtn" onclick="
+    const isLight = document.documentElement.classList.toggle('light');
+    document.getElementById('optDark').classList.toggle('active', !isLight);
+    document.getElementById('optLight').classList.toggle('active', isLight);
+  ">
+        <span class="t-opt active" id="optDark">🌙 Dark</span>
+        <span class="t-opt" id="optLight">☀️ Light</span>
+      </button>
+
+      <header>
+        <div class="tag">Technical Portfolio</div>
+        <h1>Subagja <span>Eric</span> Dallan</h1>
+        <p class="subtitle">Full Stack Developer — External Audit<br>
+          PT. Integrasindo Multi Kreasi — 2025–Present</p>
+
+        <div class="link-row">
+          <a href="https://inniakundigi.co.id" target="_blank"
+            class="link-btn orange">&#127760; Company Profile</a>
+          <a href="https://www.linkedin.com/in/subagja-eric-dallan-5723811b9/"
+            target="_blank" class="link-btn indigo">&#128101; LinkedIn</a>
+          <a href="https://github.com/ericdallan" target="_blank"
+            class="link-btn">&#129305; GitHub</a>
+          <a
+            href="https://drive.google.com/drive/folders/1x9OoRcKJd_ROL3LBcFxqNqrdwLxVhBLb"
+            target="_blank" class="link-btn primary">&#128193; System Analyst
+            Portfolio</a>
+        </div>
+      </header>
+
+      <div class="nav-wrapper" id="stickyNav">
+        <nav class="nav">
+          <a href="#demos" class="nav-pill" data-section="demos">Live Demo</a>
+          <a href="#sync" class="nav-pill" data-section="sync">POS Sync
+            Engine</a>
+          <a href="#wac" class="nav-pill" data-section="wac">WAC Inventory</a>
+          <a href="#licensing" class="nav-pill"
+            data-section="licensing">Licensing Ecosystem</a>
+          <a href="#desktop" class="nav-pill" data-section="desktop">Hybrid
+            Desktop</a>
+          <a href="#analyst" class="nav-pill" data-section="analyst">System
+            Analyst</a>
+        </nav>
+      </div>
+
+      <main>
+
+        <!-- ══ LIVE DEMO ══ -->
+        <section class="demo-section" id="demos">
+          <div
+            style="display:flex; align-items:flex-start; gap:20px; margin-bottom:0">
+            <span
+              style="font-family:var(--mono);font-size:11px;color:var(--muted);padding-top:4px;min-width:28px">00</span>
+            <div>
+              <div
+                style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px">Live
+                Applications</div>
+              <h2
+                style="font-size:clamp(20px,3vw,26px);font-weight:700;letter-spacing:-0.02em">Try
+                the Apps — Live Demo</h2>
+            </div>
+          </div>
+
+          <div class="demo-grid" style="margin-left:48px">
+
+            <a href="https://demo.inniakundigi.co.id" target="_blank"
+              class="demo-card akun">
+              <div class="demo-card-tag">Accounting App</div>
+              <div class="demo-card-title">inni Akun Digi</div>
+              <div class="demo-card-desc">Aplikasi akuntansi lengkap untuk
+                manajemen keuangan bisnis — voucher, buku besar, laporan laba
+                rugi, dan lebih.</div>
+              <div class="demo-feats">
+                <span class="demo-feat">Voucher Management</span>
+                <span class="demo-feat">Neraca Keuangan</span>
+                <span class="demo-feat">Piutang &amp; Hutang</span>
+                <span class="demo-feat">Stock &amp; Produksi</span>
+                <span class="demo-feat">Import/Export Excel</span>
+                <span class="demo-feat">Dashboard Real-time</span>
+              </div>
+              <div class="demo-url">&#8599; demo.inniakundigi.co.id</div>
+            </a>
+
+            <a href="https://demo-pos.inniakundigi.co.id" target="_blank"
+              class="demo-card pos">
+              <div class="demo-card-tag">Point of Sale</div>
+              <div class="demo-card-title">inni POS</div>
+              <div class="demo-card-desc">Sistem kasir modern — transaksi cepat,
+                multi metode pembayaran, laporan penjualan lengkap, dan
+                manajemen stok.</div>
+              <div class="demo-feats">
+                <span class="demo-feat">Scan Barcode</span>
+                <span class="demo-feat">QRIS / E-Wallet</span>
+                <span class="demo-feat">Multi-Gudang</span>
+                <span class="demo-feat">Retur Penjualan</span>
+                <span class="demo-feat">Laporan Arus Kas</span>
+                <span class="demo-feat">Supplier Management</span>
+              </div>
+              <div class="demo-url">&#8599; demo-pos.inniakundigi.co.id</div>
+            </a>
+
+            <a href="https://inniakundigi.co.id" target="_blank"
+              class="demo-card full">
+              <div class="demo-card-tag">Full Version</div>
+              <div class="demo-card-title">Accounting +
+                POS<br>Terintegrasi</div>
+              <div class="demo-card-desc">Ekosistem bisnis lengkap — transaksi
+                POS otomatis masuk ke jurnal akuntansi tanpa input manual.</div>
+              <div class="demo-feats">
+                <span class="demo-feat">POS &#8594; Accounting Sync</span>
+                <span class="demo-feat">Backup &amp; Restore DB</span>
+                <span class="demo-feat">Offline Desktop Mode</span>
+                <span class="demo-feat">License Protected</span>
+              </div>
+              <div class="demo-url">&#8599; Company Profile —
+                inniakundigi.co.id</div>
+            </a>
+
+          </div>
+        </section>
+
+        <hr class="divider">
+        <section class="case c1" id="sync">
+          <div class="case-header">
+            <span class="case-number">01</span>
+            <div class="case-title-wrap">
+              <div class="case-label">System Integration</div>
+              <h2 class="case-title">POS → Accounting<br>Sync Engine</h2>
+            </div>
+          </div>
+
+          <div class="case-body">
+            <div class="block">
+              <div class="block-label">Problem</div>
+              <p>POS transactions and accounting records lived in separate
+                systems. Journal entries were created manually by staff,
+                creating a high risk of human error, data inconsistency, and
+                time-consuming reconciliation at month-end.</p>
+            </div>
+
+            <div class="block">
+              <div class="block-label">What I Built</div>
+              <p>A synchronization engine that listens to completed POS
+                transactions and automatically converts them into double-entry
+                accounting journal entries — debit, credit, and all related
+                accounts — without any human intervention.</p>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Architecture Flow</div>
+              <div class="flow">
+                <div class="flow-row">
+                  <div class="flow-node">POS Transaction</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node">Event Trigger</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node">Sync Engine</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node">Journal Entry</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node">Accounting DB</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Key Challenge</div>
+              <div class="challenge-box">
+                <p><strong>Race condition</strong> — multiple transactions fired
+                  simultaneously caused duplicate or partial journal entries.
+                  Solved using database-level locking combined with transaction
+                  rollback, ensuring each sync operation is atomic and
+                  idempotent.</p>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Tech Stack</div>
+              <div class="stack">
+                <span class="badge">PHP / Laravel</span>
+                <span class="badge">MySQL</span>
+                <span class="badge">DB Transactions</span>
+                <span class="badge">Queue / Jobs</span>
+                <span class="badge">Pessimistic Locking</span>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Result</div>
+              <div class="metrics">
+                <div class="metric">
+                  <div class="metric-value">0</div>
+                  <div class="metric-label">Data discrepancy between POS &
+                    accounting</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">100%</div>
+                  <div class="metric-label">Journal entries automated, zero
+                    manual input</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">↓</div>
+                  <div class="metric-label">Month-end reconciliation time
+                    drastically reduced</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- ══ CASE 2 ══ -->
+        <section class="case c2" id="wac">
+          <div class="case-header">
+            <span class="case-number">02</span>
+            <div class="case-title-wrap">
+              <div class="case-label">Inventory Engineering</div>
+              <h2 class="case-title">Weighted Average Cost<br>Inventory
+                Valuation</h2>
+            </div>
+          </div>
+
+          <div class="case-body">
+            <div class="block">
+              <div class="block-label">Problem</div>
+              <p>Inventory asset values were static and not recalculated when
+                new stock arrived at different prices. This caused inaccurate
+                COGS (Cost of Goods Sold) reports and unreliable balance sheets,
+                which is a critical issue for financial compliance.</p>
+            </div>
+
+            <div class="block">
+              <div class="block-label">What I Built</div>
+              <p>A real-time inventory valuation system using the Weighted
+                Average Cost (WAC) method. Every incoming Purchase transaction
+                automatically recalculates the average unit cost across all
+                existing stock, keeping asset values accurate at all times.</p>
+            </div>
+
+            <div class="block">
+              <div class="block-label">WAC Formula</div>
+              <div class="flow">
+                <div class="flow-row">
+                  <div class="flow-node">(Existing Stock × Old Avg Cost)</div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-node">(New Qty × New Price)</div>
+                  <div class="flow-arrow">÷</div>
+                  <div class="flow-node">(Total Qty)</div>
+                  <div class="flow-arrow">=</div>
+                  <div class="flow-node">New Avg Cost</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Transaction Coverage</div>
+              <div class="stack">
+                <span class="badge">Purchase → cost recalculation</span>
+                <span class="badge">Sales → COGS deduction</span>
+                <span class="badge">Purchase Return → reverse recalc</span>
+                <span class="badge">Sales Return → stock restoration</span>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Key Challenge</div>
+              <div class="challenge-box">
+                <p>Ensuring <strong>returns are handled correctly</strong> — a
+                  Purchase Return must reverse the WAC recalculation
+                  proportionally, not just subtract quantity. Required careful
+                  handling of floating-point precision to prevent rounding
+                  errors accumulating over hundreds of transactions.</p>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Tech Stack</div>
+              <div class="stack">
+                <span class="badge">PHP / Laravel</span>
+                <span class="badge">MySQL</span>
+                <span class="badge">DB Transactions</span>
+                <span class="badge">Decimal Precision Handling</span>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Result</div>
+              <div class="metrics">
+                <div class="metric">
+                  <div class="metric-value">Real-time</div>
+                  <div class="metric-label">Asset value updated on every
+                    transaction</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">4</div>
+                  <div class="metric-label">Transaction types handled (buy,
+                    sell, return×2)</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">✓</div>
+                  <div class="metric-label">Compliant with standard accounting
+                    principles</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- ══ CASE 3 ══ -->
+        <section class="case c3" id="licensing">
+          <div class="case-header">
+            <span class="case-number">03</span>
+            <div class="case-title-wrap">
+              <div class="case-label">Product Security</div>
+              <h2 class="case-title">Proprietary Software<br>Licensing
+                Ecosystem</h2>
+            </div>
+          </div>
+
+          <div class="case-body">
+            <div class="block">
+              <div class="block-label">Problem</div>
+              <p>The company's POS and Accounting software was distributed to
+                clients with no mechanism to prevent unauthorized copying or
+                redistribution. There was also no internal tooling to manage,
+                track, or audit which clients had been issued licenses —
+                everything was manual.</p>
+            </div>
+
+            <div class="block">
+              <div class="block-label">What I Built</div>
+              <p>A two-part licensing ecosystem: (1) a <strong>License Generator
+                  Web App</strong> — a secured internal admin tool for issuing,
+                managing, and exporting license keys per client, and (2) a
+                <strong>middleware-based verification layer</strong> embedded
+                inside every distributed desktop application that validates the
+                license on startup and blocks unauthorized access.</p>
+            </div>
+
+            <div class="block">
+              <div class="block-label">System Architecture</div>
+              <div class="flow">
+                <div class="flow-row">
+                  <div class="flow-node">Admin Login + OTP</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">Generate Key</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">Export CSV/Excel/PDF</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">Deliver to Client</div>
+                </div>
+              </div>
+              <div style="height:10px"></div>
+              <div class="flow">
+                <div class="flow-row">
+                  <div class="flow-node">Client installs app</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">App startup</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">Middleware validates</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">Allow / Block</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">License Generator App — Feature Set</div>
+              <div class="stack">
+                <span class="badge">Login + OTP 2FA</span>
+                <span class="badge">Generate license key</span>
+                <span class="badge">View / detail per license</span>
+                <span class="badge">Notes per client</span>
+                <span class="badge">Delete license</span>
+                <span class="badge">Export CSV</span>
+                <span class="badge">Export Excel</span>
+                <span class="badge">Export PDF</span>
+                <span class="badge">Print license</span>
+                <span class="badge">User management</span>
+                <span class="badge">Activity log</span>
+                <span class="badge">Online user monitoring</span>
+                <span class="badge">Password key generator</span>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Key Challenge</div>
+              <div class="challenge-box">
+                <p>The license key must be <strong>client-specific and
+                    non-transferable</strong> — a key for Client A cannot work
+                  on Client B's machine. Solved by encoding
+                  device/client-specific parameters into the key, verified by
+                  the middleware on every app launch. The generator app itself
+                  is additionally secured with <strong>OTP two-factor
+                    authentication</strong> to prevent unauthorized key
+                  issuance.</p>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Tech Stack</div>
+              <div class="stack">
+                <span class="badge">PHP / Laravel</span>
+                <span class="badge">Middleware</span>
+                <span class="badge">OTP / 2FA</span>
+                <span class="badge">Key Encoding / Hashing</span>
+                <span class="badge">Device Fingerprinting</span>
+                <span class="badge">Export (CSV / Excel / PDF)</span>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Result</div>
+              <div class="metrics">
+                <div class="metric">
+                  <div class="metric-value">2</div>
+                  <div class="metric-label">Separate apps: Generator + Verifier
+                    middleware</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">Per-client</div>
+                  <div class="metric-label">Unique, non-transferable license
+                    keys</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">3</div>
+                  <div class="metric-label">Export formats: CSV, Excel,
+                    PDF</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr class="divider">
+
+        <!-- ══ CASE 4 ══ -->
+        <section class="case c4" id="desktop">
+          <div class="case-header">
+            <span class="case-number">04</span>
+            <div class="case-title-wrap">
+              <div class="case-label">Software Architecture</div>
+              <h2 class="case-title">Web App →<br>Hybrid Desktop Packaging</h2>
+            </div>
+          </div>
+
+          <div class="case-body">
+            <div class="block">
+              <div class="block-label">Problem</div>
+              <p>Clients needed to run POS and Accounting software in locations
+                with unreliable or no internet access. The application was built
+                as a web app (Laravel), but clients expected a traditional
+                desktop installation experience — not a local server setup.
+                Additionally, each installed copy needed to be
+                license-controlled so it couldn't be freely copied between
+                machines.</p>
+            </div>
+
+            <div class="block">
+              <div class="block-label">What I Built</div>
+              <p>A hybrid packaging pipeline that bundles the Laravel web
+                application, a local PHP server (Laragon-based), and the
+                database into a single Windows installer (.exe). Each installer
+                ships with an embedded license middleware — so the app validates
+                its license key on every launch before granting access. Clients
+                install it like any desktop app: double-click, next, finish.</p>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Packaging Pipeline</div>
+              <div class="flow">
+                <div class="flow-row">
+                  <div class="flow-node">Laravel App</div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-node">PHP Runtime</div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-node">SQLite/MySQL</div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-node">License Middleware</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">PHPExeDesktop</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">InnoSetup .exe</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">License Flow Inside Desktop App</div>
+              <div class="flow">
+                <div class="flow-row">
+                  <div class="flow-node">App launched</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">Middleware runs</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">Read license key file</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">Validate against device</div>
+                  <div class="flow-arrow">&#8594;</div>
+                  <div class="flow-node">Allow / Block</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Key Challenge</div>
+              <div class="challenge-box">
+                <p>Managing <strong>4 product modules</strong> (Basic, Full,
+                  Retail, Manufacturing) each with different feature sets,
+                  database schemas, and license tiers — all needing independent
+                  installers without code duplication. Solved with a shared core
+                  codebase, module-level feature flags, and separate DB
+                  migration sets per module. Each module's installer also embeds
+                  its own license validation scope.</p>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Tech Stack</div>
+              <div class="stack">
+                <span class="badge">PHP / Laravel</span>
+                <span class="badge">PHPExeDesktop</span>
+                <span class="badge">InnoSetup</span>
+                <span class="badge">SQLite</span>
+                <span class="badge">MySQL</span>
+                <span class="badge">License Middleware</span>
+                <span class="badge">Feature Flags</span>
+                <span class="badge">DB Migrations per Module</span>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="block-label">Result</div>
+              <div class="metrics">
+                <div class="metric">
+                  <div class="metric-value">4</div>
+                  <div class="metric-label">Independent installers, one per
+                    product module</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">Offline</div>
+                  <div class="metric-label">Fully operational without internet
+                    connection</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">Locked</div>
+                  <div class="metric-label">Each copy tied to a specific client
+                    device</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ══ SYSTEM ANALYST ══ -->
+        <section class="demo-section" id="analyst" style="margin-top:64px">
+          <div
+            style="display:flex; align-items:flex-start; gap:20px; margin-bottom:0">
+            <span
+              style="font-family:var(--mono);font-size:11px;color:var(--muted);padding-top:4px;min-width:28px">SA</span>
+            <div>
+              <div
+                style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#a78bfa;margin-bottom:8px">System
+                Analyst Portfolio</div>
+              <h2
+                style="font-size:clamp(20px,3vw,26px);font-weight:700;letter-spacing:-0.02em">Analysis
+                & Design Projects</h2>
+              <p
+                style="font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:8px;line-height:1.6">Requirement
+                analysis, system design, UML modeling, and digital solution
+                blueprinting for various business domains.</p>
+            </div>
+          </div>
+
+          <div
+            style="margin-left:48px;margin-top:24px;display:flex;flex-direction:column;gap:16px">
+
+            <!-- SA Card 1 -->
+            <div class="sa-card"
+              style="background:var(--surface);border:1px solid var(--border);border-left:3px solid #a78bfa;border-radius:0 10px 10px 0;padding:22px 24px">
+              <div
+                style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+                <div>
+                  <div
+                    style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#a78bfa;margin-bottom:6px">Project
+                    01 · Internship — PT. Jasamarga Related Business</div>
+                  <div
+                    style="font-size:16px;font-weight:700;color:var(--text)">Sistem
+                    Pemesanan Iklan Digital</div>
+                </div>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:4px;border:1px solid rgba(167,139,250,0.3);color:#a78bfa;background:rgba(167,139,250,0.05);white-space:nowrap">Web
+                  Platform</span>
+              </div>
+              <p
+                style="font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:14px">Platform
+                digital untuk pemesanan dan pengelolaan slot iklan PT. Jasa
+                Marga Related Business. Mengotomatisasi proses pemesanan,
+                negosiasi harga, penjadwalan survei, dan pembayaran online yang
+                sebelumnya dilakukan secara manual.</p>
+              <div
+                style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Self-service
+                  Ad Booking</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Survey
+                  Scheduling</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Price
+                  Negotiation</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Online
+                  Payment</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Live
+                  Chat Admin</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Q&amp;A
+                  Forum</span>
+              </div>
+              <div style="display:flex;gap:16px;flex-wrap:wrap">
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#128196;
+                  UML Diagrams</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#128196;
+                  ERD</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#127912;
+                  Figma UI/UX</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#128736;
+                  PHP/Laravel</span>
+              </div>
+            </div>
+
+            <!-- SA Card 2 -->
+            <div class="sa-card"
+              style="background:var(--surface);border:1px solid var(--border);border-left:3px solid #34d399;border-radius:0 10px 10px 0;padding:22px 24px">
+              <div
+                style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+                <div>
+                  <div
+                    style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#34d399;margin-bottom:6px">Project
+                    02 · Doc District</div>
+                  <div
+                    style="font-size:16px;font-weight:700;color:var(--text)">Sistem
+                    Informasi Pengajuan Dokumen Desa</div>
+                </div>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:4px;border:1px solid rgba(52,211,153,0.3);color:#34d399;background:rgba(52,211,153,0.05);white-space:nowrap">E-Government</span>
+              </div>
+              <p
+                style="font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:14px">Platform
+                digital untuk pengajuan dokumen resmi desa secara online.
+                Menggantikan proses manual yang lambat, memungkinkan warga
+                mengajukan dokumen dari mana saja, dan menyediakan pelacakan
+                status real-time untuk mengurangi beban kerja staf desa.</p>
+              <div
+                style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Online
+                  Submission</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Real-time
+                  Status Tracking</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Document
+                  Management</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Info
+                  Portal</span>
+              </div>
+              <div style="display:flex;gap:16px;flex-wrap:wrap">
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#128196;
+                  System Requirements</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#128196;
+                  UML Diagrams</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#127912;
+                  Wireframe</span>
+              </div>
+            </div>
+
+            <!-- SA Card 3 -->
+            <div class="sa-card"
+              style="background:var(--surface);border:1px solid var(--border);border-left:3px solid #fbbf24;border-radius:0 10px 10px 0;padding:22px 24px">
+              <div
+                style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+                <div>
+                  <div
+                    style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#fbbf24;margin-bottom:6px">Project
+                    03 · Elaeis — PT. Inti Indosawit Subur</div>
+                  <div
+                    style="font-size:16px;font-weight:700;color:var(--text)">Sistem
+                    E-Commerce Minyak Sawit</div>
+                </div>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:4px;border:1px solid rgba(251,191,36,0.3);color:#fbbf24;background:rgba(251,191,36,0.05);white-space:nowrap">E-Commerce</span>
+              </div>
+              <p
+                style="font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:14px">Platform
+                e-commerce B2B untuk penjualan produk minyak sawit PT. Inti
+                Indosawit Subur. Memperluas jangkauan pasar secara online dengan
+                katalog produk lengkap, multi-metode pembayaran, pelacakan
+                pesanan real-time, dan dashboard analitik penjualan.</p>
+              <div
+                style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Product
+                  Catalog</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Shopping
+                  Cart</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Multi-payment</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Order
+                  Tracking</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Sales
+                  Analytics</span>
+              </div>
+              <div style="display:flex;gap:16px;flex-wrap:wrap">
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#128196;
+                  Business Requirements</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#128196;
+                  ERD</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#127912;
+                  UI Design</span>
+              </div>
+            </div>
+
+            <!-- SA Card 4 -->
+            <div class="sa-card"
+              style="background:var(--surface);border:1px solid var(--border);border-left:3px solid #f472b6;border-radius:0 10px 10px 0;padding:22px 24px">
+              <div
+                style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+                <div>
+                  <div
+                    style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#f472b6;margin-bottom:6px">Project
+                    04 · Final Project — Telkom University</div>
+                  <div
+                    style="font-size:16px;font-weight:700;color:var(--text)">Babagi
+                    Travel — Crowdsourcing Pemilihan Travel Umrah</div>
+                </div>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:4px 10px;border-radius:4px;border:1px solid rgba(244,114,182,0.3);color:#f472b6;background:rgba(244,114,182,0.05);white-space:nowrap">Crowdsourcing</span>
+              </div>
+              <p
+                style="font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.7;margin-bottom:14px">Aplikasi
+                crowdsourcing untuk membantu calon jamaah Umrah memilih biro
+                travel terpercaya dari ribuan pilihan yang terdaftar di SIMPU
+                Kemenag. Sistem verifikasi data terintegrasi API Kemenag,
+                perbandingan paket, dan review komunitas. Dikembangkan
+                menggunakan metode Iterative Incremental — fokus pada Modul
+                Verifikasi.</p>
+              <div
+                style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Verifikasi
+                  SIMPU Kemenag</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Package
+                  Comparison</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Review
+                  System</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Document
+                  Verification</span>
+                <span
+                  style="font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:4px;border:1px solid var(--border);color:var(--muted)">Travel
+                  Registration</span>
+              </div>
+              <div
+                style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+                <div style="display:flex;gap:16px;flex-wrap:wrap">
+                  <span
+                    style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#128196;
+                    Iterative Incremental Method</span>
+                  <span
+                    style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#128196;
+                    UML Diagrams</span>
+                  <span
+                    style="font-family:var(--mono);font-size:10px;color:var(--muted)">&#127912;
+                    Figma</span>
+                </div>
+                <a
+                  href="https://drive.google.com/drive/folders/1x9OoRcKJd_ROL3LBcFxqNqrdwLxVhBLb"
+                  target="_blank"
+                  style="font-family:var(--mono);font-size:10px;color:#f472b6;text-decoration:none;border:1px solid rgba(244,114,182,0.3);padding:4px 10px;border-radius:4px;background:rgba(244,114,182,0.05)">&#128193;
+                  Full Docs &#8599;</a>
+              </div>
+            </div>
+
+            <div style="margin-top:4px">
+              <a
+                href="https://drive.google.com/drive/folders/1x9OoRcKJd_ROL3LBcFxqNqrdwLxVhBLb"
+                target="_blank" class="link-btn primary"
+                style="display:inline-flex">&#128193; View Full System Analyst
+                Portfolio on Google Drive &#8599;</a>
+            </div>
+
+          </div>
+        </section>
+
+        <hr class="divider" style="margin-top:64px">
+
+        <!-- ══ CONNECT ══ -->
+        <section class="connect-section" id="connect">
+          <div
+            style="font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Connect</div>
+          <h2 style="font-size:20px;font-weight:700;letter-spacing:-0.01em">Get
+            in Touch</h2>
+          <div class="connect-grid">
+            <a href="https://www.linkedin.com/in/subagja-eric-dallan-5723811b9/"
+              target="_blank" class="connect-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
+              LinkedIn
+            </a>
+            <a href="https://github.com/ericdallan" target="_blank"
+              class="connect-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path
+                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg>
+              GitHub
+            </a>
+            <a href="mailto:ericsubagja66@gmail.com" class="connect-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path
+                  d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.9.732-1.636 1.636-1.636h.91L12 10.09l9.455-6.27h.909A1.636 1.636 0 0 1 24 5.457z" /></svg>
+              ericsubagja66@gmail.com
+            </a>
+            <a
+              href="https://drive.google.com/drive/folders/1x9OoRcKJd_ROL3LBcFxqNqrdwLxVhBLb"
+              target="_blank" class="connect-btn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path
+                  d="M4.433 22.396l2.888-5.002H22.04l-2.89 5.002H4.433zM1.96 18.004L7.73 8.004l2.887 5-5.77 9.996-2.887-4.996zM10.617 8.004h11.54l-5.77 9.998h-11.54l5.77-9.998z" /></svg>
+              System Analyst Portfolio
+            </a>
+            <a href="https://inniakundigi.co.id" target="_blank"
+              class="connect-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2"><circle cx="12" cy="12" r="10" /><line x1="2"
+                  y1="12" x2="22" y2="12" /><path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+              Company Profile
+            </a>
+          </div>
+        </section>
+
+      </main>
+
+      <footer>
+        <p>&#169; 2025 Subagja Eric Dallan &nbsp;·&nbsp; Bandung, Indonesia</p>
+      </footer></div>
+    <script>
+  const pills = document.querySelectorAll('.nav-pill[data-section]');
+  const sections = ['demos','sync','wac','licensing','desktop','analyst'];
+
+  function updateActive() {
+    let current = sections[0];
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 80) current = id;
+    });
+    pills.forEach(p => {
+      p.classList.toggle('active', p.dataset.section === current);
+    });
+  }
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  updateActive();
+</script>
+  </body>
+</html>
