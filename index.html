@@ -19,6 +19,7 @@
     --accent4: #fbbf24;
     --text: #e2e8f0;
     --muted: #64748b;
+    --body-text: #94a3b8;
     --mono: 'DM Mono', monospace;
     --sans: 'Syne', sans-serif;
   }
@@ -30,6 +31,7 @@
     --border: #c8d0dc;
     --text: #0f172a;
     --muted: #475569;
+    --body-text: #1e293b;
     --accent: #059669;
     --accent2: #4f46e5;
     --accent3: #db2777;
@@ -40,12 +42,31 @@
       linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
   }
-  .light [style*="color:var(--muted)"],
+
+  /* ──  light mode  ── */
+  .light .block p { color: #1e293b !important; }
+  .light .challenge-box p { color: #1e293b !important; }
+  .light .subtitle { color: #334155 !important; }
+  .light .demo-card-desc { color: #334155 !important; }
+  .light .metric-label { color: #334155 !important; }
+  .light .case-number { color: #334155 !important; }
+  .light .flow-arrow { color: #475569 !important; }
+  .light [style*="color:var(--muted)"] { color: #475569 !important; }
   .light [style*="color: var(--muted)"] { color: #475569 !important; }
-  .light .block p, .light .challenge-box p,
-  .light .demo-card-desc, .light .subtitle { color: #334155 !important; }
-  .light .sa-card [style*="color:var(--muted)"] { color: #475569 !important; }
-  .light [style*="#94a3b8"] { color: #334155 !important; }
+  .light [style*="#94a3b8"] { color: #1e293b !important; }
+  .light .demo-feat { color: #334155 !important; border-color: #b0bac8 !important; }
+  .light .connect-btn { color: #0f172a !important; }
+  .light footer { color: #475569 !important; }
+  .light .flow { background: #f8fafc !important; }
+  .light .challenge-box { background: #f8fafc !important; }
+  .light .metric { background: #f8fafc !important; }
+  .light .nav-pill { color: #334155 !important; }
+  .light .nav-pill:hover, .light .nav-pill.active {
+    background: rgba(5,150,105,0.08) !important;
+    color: #059669 !important;
+    border-color: #059669 !important;
+  }
+  .light .link-btn:not(.primary):not(.indigo):not(.orange) { color: #334155 !important; }
 
   /* theme toggle — pill with two segments */
   .theme-toggle {
@@ -272,7 +293,7 @@
   .block p {
     font-size: 14px;
     line-height: 1.75;
-    color: #94a3b8;
+    color: var(--body-text, #94a3b8);
     font-family: var(--mono);
     font-weight: 300;
   }
