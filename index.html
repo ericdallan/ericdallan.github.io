@@ -40,22 +40,16 @@
       linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
       linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
   }
-  /* fix ALL inline color:var(--muted) in light mode */
   .light [style*="color:var(--muted)"],
   .light [style*="color: var(--muted)"] { color: #475569 !important; }
   .light .block p, .light .challenge-box p,
   .light .demo-card-desc, .light .subtitle { color: #334155 !important; }
   .light .sa-card [style*="color:var(--muted)"] { color: #475569 !important; }
-  /* fix inline hardcoded dark colors */
   .light [style*="#94a3b8"] { color: #334155 !important; }
 
   /* theme toggle — pill with two segments */
   .theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 100;
-    background: var(--surface);
+    background: var(--surface2);
     border: 1px solid var(--border);
     border-radius: 100px;
     cursor: pointer;
@@ -64,12 +58,12 @@
     padding: 3px;
     gap: 2px;
     transition: all 0.25s;
-    box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+    flex-shrink: 0;
   }
   .theme-toggle .t-opt {
     font-family: var(--mono);
     font-size: 11px;
-    padding: 5px 12px;
+    padding: 4px 10px;
     border-radius: 100px;
     display: flex;
     align-items: center;
@@ -158,22 +152,24 @@
     top: 0;
     z-index: 90;
     margin: 0 -24px;
-    padding: 10px 24px;
-    background: rgba(10,10,15,0.85);
+    padding: 8px 24px;
+    background: rgba(10,10,15,0.88);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
     transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
   .light .nav-wrapper {
-    background: rgba(241,244,248,0.88);
+    background: rgba(241,244,248,0.92);
   }
   .nav {
     display: flex;
     gap: 6px;
     flex-wrap: wrap;
-    max-width: 900px;
-    margin: 0 auto;
+    flex: 1;
   }
   .nav-pill {
     font-family: var(--mono);
@@ -185,6 +181,7 @@
     cursor: pointer;
     transition: all 0.2s;
     text-decoration: none;
+    white-space: nowrap;
   }
   .nav-pill:hover, .nav-pill.active {
     border-color: var(--accent);
@@ -460,14 +457,6 @@
   <body>
 
     <div class="container">
-      <button class="theme-toggle" id="themeBtn" onclick="
-    const isLight = document.documentElement.classList.toggle('light');
-    document.getElementById('optDark').classList.toggle('active', !isLight);
-    document.getElementById('optLight').classList.toggle('active', isLight);
-  ">
-        <span class="t-opt active" id="optDark">🌙 Dark</span>
-        <span class="t-opt" id="optLight">☀️ Light</span>
-      </button>
 
       <header>
         <div class="tag">Technical Portfolio</div>
@@ -502,6 +491,14 @@
           <a href="#analyst" class="nav-pill" data-section="analyst">System
             Analyst</a>
         </nav>
+        <button class="theme-toggle" id="themeBtn" onclick="
+      const isLight = document.documentElement.classList.toggle('light');
+      document.getElementById('optDark').classList.toggle('active', !isLight);
+      document.getElementById('optLight').classList.toggle('active', isLight);
+    ">
+          <span class="t-opt active" id="optDark">🌙</span>
+          <span class="t-opt" id="optLight">☀️</span>
+        </button>
       </div>
 
       <main>
@@ -1322,7 +1319,7 @@
       </main>
 
       <footer>
-        <p>&#169; 2025 Subagja Eric Dallan &nbsp;·&nbsp; Bandung, Indonesia</p>
+        <p>&#169; 2025 Subagja Eric Dallan &nbsp;·&nbsp; Cianjur, Indonesia</p>
       </footer></div>
     <script>
   const pills = document.querySelectorAll('.nav-pill[data-section]');
