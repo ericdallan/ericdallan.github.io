@@ -6,53 +6,39 @@
     <title>Eric Dallan — Technical Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&display=swap">
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&display=swap"
-      rel="stylesheet">
+      rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&display=swap"
+        rel="stylesheet"></noscript>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@0.577.0/dist/umd/lucide.min.js"
+      defer></script>
   </head>
   <body>
 
-    <div class="container">
-
-      <!-- ══ HEADER ══════════════════════════════════════════════════════════════ -->
-      <header>
-        <div class="tag" data-i18n="tag">Technical Portfolio</div>
-        <h1>Subagja <span>Eric</span> Dallan</h1>
-        <p class="subtitle" data-i18n="subtitle">
-          Full Stack Developer — External Audit<br>
-          PT. Integrasindo Multi Kreasi — 2025–Present
-        </p>
-        <div class="link-row">
-          <a href="https://inniakundigi.co.id" target="_blank"
-            class="link-btn orange" data-i18n="link-company">🌐 Company
-            Profile</a>
-          <a href="https://www.linkedin.com/in/subagja-eric-dallan-5723811b9/"
-            target="_blank" class="link-btn indigo">&#128101; LinkedIn</a>
-          <a href="https://github.com/ericdallan" target="_blank"
-            class="link-btn">&#129305; GitHub</a>
-          <a
-            href="https://drive.google.com/drive/folders/1x9OoRcKJd_ROL3LBcFxqNqrdwLxVhBLb"
-            target="_blank" class="link-btn primary" data-i18n="link-gdrive">📁
-            System Analyst Portfolio</a>
-        </div>
-      </header>
-
-      <!-- ══ STICKY NAV ══════════════════════════════════════════════════════════ -->
-      <div class="nav-wrapper" id="stickyNav">
+    <!-- ══ STICKY NAV ══════════════════════════════════════════════════════════ -->
+    <div class="nav-wrapper" id="stickyNav">
+      <div class="progress-bar" id="progressBar"></div>
+      <div class="nav-inner">
         <nav class="nav">
           <a href="#demos" class="nav-pill" data-section="demos"
-            data-i18n="nav-demos">Live Demo</a>
+            data-i18n="nav-demos"></a>
           <a href="#sync" class="nav-pill" data-section="sync"
-            data-i18n="nav-sync">POS Sync Engine</a>
+            data-i18n="nav-sync"></a>
           <a href="#wac" class="nav-pill" data-section="wac"
-            data-i18n="nav-wac">WAC Inventory</a>
+            data-i18n="nav-wac"></a>
           <a href="#licensing" class="nav-pill" data-section="licensing"
-            data-i18n="nav-licensing">Licensing Ecosystem</a>
+            data-i18n="nav-licensing"></a>
+          <a href="#obfuscation" class="nav-pill" data-section="obfuscation"
+            data-i18n="nav-obfuscation"></a>
           <a href="#desktop" class="nav-pill" data-section="desktop"
-            data-i18n="nav-desktop">Hybrid Desktop</a>
+            data-i18n="nav-desktop"></a>
           <a href="#analyst" class="nav-pill" data-section="analyst"
-            data-i18n="nav-analyst">System Analyst</a>
+            data-i18n="nav-analyst"></a>
         </nav>
         <div class="nav-controls">
           <button class="theme-toggle" id="langBtn" title="Switch language">
@@ -65,6 +51,47 @@
           </button>
         </div>
       </div>
+    </div>
+
+    <div class="container">
+
+      <!-- ══ HEADER ══════════════════════════════════════════════════════════════ -->
+      <header>
+        <div class="tag" data-i18n="tag"></div>
+        <h1>Subagja <span>Eric</span> Dallan</h1>
+        <p class="subtitle" data-i18n="subtitle"></p>
+        <div class="link-row">
+          <a href="https://inniakundigi.co.id" target="_blank"
+            class="link-btn orange" data-i18n="link-company"
+            data-tooltip="tip-company">
+            <i data-lucide="globe" style="width:14px;height:14px;"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/subagja-eric-dallan-5723811b9/"
+            target="_blank" class="link-btn indigo" data-tooltip="tip-linkedin">
+            <i data-lucide="linkedin" style="width:14px;height:14px;"></i>
+            LinkedIn
+          </a>
+          <a href="https://github.com/ericdallan" target="_blank"
+            class="link-btn" data-tooltip="tip-github">
+            <i data-lucide="github" style="width:14px;height:14px;"></i>
+            GitHub
+          </a>
+          <a
+            href="https://drive.google.com/drive/folders/1x9OoRcKJd_ROL3LBcFxqNqrdwLxVhBLb"
+            target="_blank" class="link-btn primary" data-i18n="link-gdrive"
+            data-tooltip="tip-gdrive">
+            <i data-lucide="folder-open" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- ══ ABOUT ME ════════════════════════════════════════════════════════════ -->
+      <section class="about-section" id="about">
+        <div class="about-bio-wrap">
+          <div class="tag" data-i18n="about-tag"></div>
+          <p class="about-text" data-i18n="about-bio-en"></p>
+        </div>
+      </section>
 
       <main>
 
@@ -73,75 +100,58 @@
           <div class="section-header">
             <span class="section-num">00</span>
             <div>
-              <div class="section-label" data-i18n="demo-label">Live
-                Applications</div>
-              <h2 class="section-title" data-i18n="demo-title">Try the Apps —
-                Live Demo</h2>
+              <div class="section-label" data-i18n="demo-label"></div>
+              <h2 class="section-title" data-i18n="demo-title"></h2>
             </div>
           </div>
-
           <div class="demo-grid">
+
             <a href="https://demo.inniakundigi.co.id" target="_blank"
-              class="demo-card akun">
-              <div class="demo-card-tag" data-i18n="akun-tag">Accounting
-                App</div>
-              <div class="demo-card-title" data-i18n="akun-title">inni Akun
-                Digi</div>
-              <div class="demo-card-desc" data-i18n="akun-desc">Full-featured
-                accounting application for business financial management —
-                vouchers, general ledger, P&amp;L reports, and more.</div>
+              class="demo-card akun" data-tooltip="tip-demo-akun">
+              <div class="demo-card-tag" data-i18n="akun-tag"></div>
+              <div class="demo-card-title" data-i18n="akun-title"></div>
+              <div class="demo-card-desc" data-i18n="akun-desc"></div>
               <div class="demo-feats">
-                <span class="demo-feat">Voucher Management</span>
-                <span class="demo-feat" data-i18n="feat-balance-sheet">Balance
-                  Sheet</span>
-                <span class="demo-feat" data-i18n="feat-ar-ap">AR &amp;
-                  AP</span>
-                <span class="demo-feat" data-i18n="feat-stock-prod">Stock &amp;
-                  Production</span>
-                <span class="demo-feat">Import/Export Excel</span>
-                <span class="demo-feat">Real-time Dashboard</span>
+                <span class="demo-feat" data-i18n="akun-feat1"></span>
+                <span class="demo-feat" data-i18n="akun-feat2"></span>
+                <span class="demo-feat" data-i18n="akun-feat3"></span>
+                <span class="demo-feat" data-i18n="akun-feat4"></span>
+                <span class="demo-feat" data-i18n="akun-feat5"></span>
+                <span class="demo-feat" data-i18n="akun-feat6"></span>
               </div>
-              <div class="demo-url">&#8599; demo.inniakundigi.co.id</div>
+              <div class="demo-url" data-i18n="akun-url"></div>
             </a>
 
             <a href="https://demo-pos.inniakundigi.co.id" target="_blank"
-              class="demo-card pos">
-              <div class="demo-card-tag" data-i18n="pos-tag">Point of Sale</div>
-              <div class="demo-card-title" data-i18n="pos-title">inni POS</div>
-              <div class="demo-card-desc" data-i18n="pos-desc">Modern cashier
-                system — fast transactions, multi-payment methods, complete
-                sales reports, and stock management.</div>
+              class="demo-card pos" data-tooltip="tip-demo-pos">
+              <div class="demo-card-tag" data-i18n="pos-tag"></div>
+              <div class="demo-card-title" data-i18n="pos-title"></div>
+              <div class="demo-card-desc" data-i18n="pos-desc"></div>
               <div class="demo-feats">
-                <span class="demo-feat">Scan Barcode</span>
-                <span class="demo-feat">QRIS / E-Wallet</span>
-                <span class="demo-feat"
-                  data-i18n="feat-multi-wh">Multi-Warehouse</span>
-                <span class="demo-feat" data-i18n="feat-sales-return">Sales
-                  Return</span>
-                <span class="demo-feat" data-i18n="feat-cashflow">Cash Flow
-                  Report</span>
-                <span class="demo-feat">Supplier Management</span>
+                <span class="demo-feat" data-i18n="pos-feat1"></span>
+                <span class="demo-feat" data-i18n="pos-feat2"></span>
+                <span class="demo-feat" data-i18n="pos-feat3"></span>
+                <span class="demo-feat" data-i18n="pos-feat4"></span>
+                <span class="demo-feat" data-i18n="pos-feat5"></span>
+                <span class="demo-feat" data-i18n="pos-feat6"></span>
               </div>
-              <div class="demo-url">&#8599; demo-pos.inniakundigi.co.id</div>
+              <div class="demo-url" data-i18n="pos-url"></div>
             </a>
 
             <a href="https://inniakundigi.co.id" target="_blank"
-              class="demo-card full">
-              <div class="demo-card-tag" data-i18n="full-tag">Full Version</div>
-              <div class="demo-card-title" data-i18n="full-title">Accounting +
-                POS<br>Integrated</div>
-              <div class="demo-card-desc" data-i18n="full-desc">Complete
-                business ecosystem — POS transactions automatically posted to
-                accounting journals without manual input.</div>
+              class="demo-card full" data-tooltip="tip-demo-full">
+              <div class="demo-card-tag" data-i18n="full-tag"></div>
+              <div class="demo-card-title" data-i18n="full-title"></div>
+              <div class="demo-card-desc" data-i18n="full-desc"></div>
               <div class="demo-feats">
-                <span class="demo-feat">POS &#8594; Accounting Sync</span>
-                <span class="demo-feat">Backup &amp; Restore DB</span>
-                <span class="demo-feat">Offline Desktop Mode</span>
-                <span class="demo-feat">License Protected</span>
+                <span class="demo-feat" data-i18n="full-feat1"></span>
+                <span class="demo-feat" data-i18n="full-feat2"></span>
+                <span class="demo-feat" data-i18n="full-feat3"></span>
+                <span class="demo-feat" data-i18n="full-feat4"></span>
               </div>
-              <div class="demo-url">&#8599; Company Profile —
-                inniakundigi.co.id</div>
+              <div class="demo-url" data-i18n="full-url"></div>
             </a>
+
           </div>
         </section>
 
@@ -152,92 +162,68 @@
           <div class="case-header">
             <span class="case-number">01</span>
             <div class="case-title-wrap">
-              <div class="case-label" data-i18n="c1-label">System
-                Integration</div>
-              <h2 class="case-title">POS → Accounting<br>Sync Engine</h2>
+              <div class="case-label" data-i18n="c1-label"></div>
+              <h2 class="case-title" data-i18n="c1-title"></h2>
             </div>
           </div>
           <div class="case-body">
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-problem">Problem</div>
-              <p data-i18n="c1-problem">POS transactions and accounting records
-                lived in separate systems. Journal entries were created manually
-                by staff, creating a high risk of human error, data
-                inconsistency, and time-consuming reconciliation at
-                month-end.</p>
+              <div class="block-label" data-i18n="lbl-problem"></div>
+              <p data-i18n="c1-problem"></p>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-built">What I Built</div>
-              <p data-i18n="c1-built">A synchronization engine that listens to
-                completed POS transactions and automatically converts them into
-                double-entry accounting journal entries — debit, credit, and all
-                related accounts — without any human intervention.</p>
+              <div class="block-label" data-i18n="lbl-built"></div>
+              <p data-i18n="c1-built"></p>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-flow">Architecture
-                Flow</div>
+              <div class="block-label" data-i18n="lbl-flow"></div>
               <div class="flow">
                 <div class="flow-row">
-                  <div class="flow-node">POS Transaction</div>
+                  <div class="flow-node" data-i18n="c1-flow1"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">Event Trigger</div>
+                  <div class="flow-node" data-i18n="c1-flow2"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">Sync Engine</div>
+                  <div class="flow-node" data-i18n="c1-flow3"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">Journal Entry</div>
+                  <div class="flow-node" data-i18n="c1-flow4"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">Accounting DB</div>
+                  <div class="flow-node" data-i18n="c1-flow5"></div>
                 </div>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-challenge">Key
-                Challenge</div>
+              <div class="block-label" data-i18n="lbl-challenge"></div>
               <div class="challenge-box">
-                <p data-i18n="c1-challenge"><strong>Race condition</strong> —
-                  multiple transactions fired simultaneously caused duplicate or
-                  partial journal entries. Solved using database-level locking
-                  combined with transaction rollback, ensuring each sync
-                  operation is atomic and idempotent.</p>
+                <p data-i18n="c1-challenge"></p>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-stack">Tech Stack</div>
+              <div class="block-label" data-i18n="lbl-stack"></div>
               <div class="stack">
-                <span class="badge">PHP / Laravel</span>
-                <span class="badge">MySQL</span>
-                <span class="badge">DB Transactions</span>
-                <span class="badge">Queue / Jobs</span>
-                <span class="badge">Pessimistic Locking</span>
+                <span class="badge" data-i18n="c1-badge1"></span>
+                <span class="badge" data-i18n="c1-badge2"></span>
+                <span class="badge" data-i18n="c1-badge3"></span>
+                <span class="badge" data-i18n="c1-badge4"></span>
+                <span class="badge" data-i18n="c1-badge5"></span>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-result">Result</div>
+              <div class="block-label" data-i18n="lbl-result"></div>
               <div class="metrics">
                 <div class="metric">
-                  <div class="metric-value">0</div>
-                  <div class="metric-label" data-i18n="m1-1">Data discrepancy
-                    between POS &amp; accounting</div>
+                  <div class="metric-value" data-i18n="m1-val1"></div>
+                  <div class="metric-label" data-i18n="m1-1"></div>
                 </div>
                 <div class="metric">
-                  <div class="metric-value">100%</div>
-                  <div class="metric-label" data-i18n="m1-2">Journal entries
-                    automated, zero manual input</div>
+                  <div class="metric-value" data-i18n="m1-val2"></div>
+                  <div class="metric-label" data-i18n="m1-2"></div>
                 </div>
                 <div class="metric">
-                  <div class="metric-value">↓</div>
-                  <div class="metric-label" data-i18n="m1-3">Month-end
-                    reconciliation time drastically reduced</div>
+                  <div class="metric-value" data-i18n="m1-val3"></div>
+                  <div class="metric-label" data-i18n="m1-3"></div>
                 </div>
               </div>
             </div>
-
           </div>
         </section>
 
@@ -248,102 +234,74 @@
           <div class="case-header">
             <span class="case-number">02</span>
             <div class="case-title-wrap">
-              <div class="case-label" data-i18n="c2-label">Inventory
-                Engineering</div>
-              <h2 class="case-title">Weighted Average Cost<br>Inventory
-                Valuation</h2>
+              <div class="case-label" data-i18n="c2-label"></div>
+              <h2 class="case-title" data-i18n="c2-title"></h2>
             </div>
           </div>
           <div class="case-body">
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-problem">Problem</div>
-              <p data-i18n="c2-problem">Inventory asset values were static and
-                not recalculated when new stock arrived at different prices.
-                This caused inaccurate COGS reports and unreliable balance
-                sheets, which is a critical issue for financial compliance.</p>
+              <div class="block-label" data-i18n="lbl-problem"></div>
+              <p data-i18n="c2-problem"></p>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-built">What I Built</div>
-              <p data-i18n="c2-built">A real-time inventory valuation system
-                using the Weighted Average Cost (WAC) method. Every incoming
-                Purchase transaction automatically recalculates the average unit
-                cost across all existing stock, keeping asset values accurate at
-                all times.</p>
+              <div class="block-label" data-i18n="lbl-built"></div>
+              <p data-i18n="c2-built"></p>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-wac-formula">WAC
-                Formula</div>
+              <div class="block-label" data-i18n="lbl-wac-formula"></div>
               <div class="flow">
                 <div class="flow-row">
-                  <div class="flow-node">(Existing Stock × Old Avg Cost)</div>
+                  <div class="flow-node" data-i18n="c2-wac1"></div>
                   <div class="flow-arrow">+</div>
-                  <div class="flow-node">(New Qty × New Price)</div>
+                  <div class="flow-node" data-i18n="c2-wac2"></div>
                   <div class="flow-arrow">÷</div>
-                  <div class="flow-node">(Total Qty)</div>
+                  <div class="flow-node" data-i18n="c2-wac3"></div>
                   <div class="flow-arrow">=</div>
-                  <div class="flow-node">New Avg Cost</div>
+                  <div class="flow-node" data-i18n="c2-wac4"></div>
                 </div>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-tx-coverage">Transaction
-                Coverage</div>
+              <div class="block-label" data-i18n="lbl-tx-coverage"></div>
               <div class="stack">
-                <span class="badge">Purchase → cost recalculation</span>
-                <span class="badge">Sales → COGS deduction</span>
-                <span class="badge">Purchase Return → reverse recalc</span>
-                <span class="badge">Sales Return → stock restoration</span>
+                <span class="badge" data-i18n="c2-badge1"></span>
+                <span class="badge" data-i18n="c2-badge2"></span>
+                <span class="badge" data-i18n="c2-badge3"></span>
+                <span class="badge" data-i18n="c2-badge4"></span>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-challenge">Key
-                Challenge</div>
+              <div class="block-label" data-i18n="lbl-challenge"></div>
               <div class="challenge-box">
-                <p data-i18n="c2-challenge">Ensuring <strong>returns are handled
-                    correctly</strong> — a Purchase Return must reverse the WAC
-                  recalculation proportionally, not just subtract quantity.
-                  Required careful handling of floating-point precision to
-                  prevent rounding errors accumulating over hundreds of
-                  transactions.</p>
+                <p data-i18n="c2-challenge"></p>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-stack">Tech Stack</div>
+              <div class="block-label" data-i18n="lbl-stack"></div>
               <div class="stack">
-                <span class="badge">PHP / Laravel</span>
-                <span class="badge">MySQL</span>
-                <span class="badge">DB Transactions</span>
-                <span class="badge">Decimal Precision Handling</span>
+                <span class="badge" data-i18n="c2-badge5"></span>
+                <span class="badge" data-i18n="c2-badge6"></span>
+                <span class="badge" data-i18n="c2-badge7"></span>
+                <span class="badge" data-i18n="c2-badge8"></span>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-result">Result</div>
+              <div class="block-label" data-i18n="lbl-result"></div>
               <div class="metrics">
                 <div class="metric">
-                  <div class="metric-value">Real-time</div>
-                  <div class="metric-label" data-i18n="m2-1">Asset value updated
-                    on every transaction</div>
+                  <div class="metric-value" data-i18n="m2-val1"></div>
+                  <div class="metric-label" data-i18n="m2-1"></div>
                 </div>
                 <div class="metric">
-                  <div class="metric-value">4</div>
-                  <div class="metric-label" data-i18n="m2-2">Transaction types
-                    handled (buy, sell, return×2)</div>
+                  <div class="metric-value" data-i18n="m2-val2"></div>
+                  <div class="metric-label" data-i18n="m2-2"></div>
                 </div>
                 <div class="metric">
-                  <div class="metric-value">✓</div>
-                  <div class="metric-label" data-i18n="m2-3">Compliant with
-                    standard accounting principles</div>
+                  <div class="metric-value" data-i18n="m2-val3"></div>
+                  <div class="metric-label" data-i18n="m2-3"></div>
                 </div>
               </div>
             </div>
-
           </div>
         </section>
 
@@ -354,250 +312,274 @@
           <div class="case-header">
             <span class="case-number">03</span>
             <div class="case-title-wrap">
-              <div class="case-label" data-i18n="c3-label">Product
-                Security</div>
-              <h2 class="case-title">Proprietary Software<br>Licensing
-                Ecosystem</h2>
+              <div class="case-label" data-i18n="c3-label"></div>
+              <h2 class="case-title" data-i18n="c3-title"></h2>
             </div>
           </div>
           <div class="case-body">
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-problem">Problem</div>
-              <p data-i18n="c3-problem">The company's POS and Accounting
-                software was distributed to clients with no mechanism to prevent
-                unauthorized copying or redistribution. There was also no
-                internal tooling to manage, track, or audit which clients had
-                been issued licenses.</p>
+              <div class="block-label" data-i18n="lbl-problem"></div>
+              <p data-i18n="c3-problem"></p>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-built">What I Built</div>
-              <p data-i18n="c3-built">A two-part licensing ecosystem: (1) a
-                <strong>License Generator Web App</strong> — a secured internal
-                admin tool for issuing, managing, and exporting license keys per
-                client, and (2) a <strong>middleware-based verification
-                  layer</strong> embedded inside every distributed desktop
-                application.</p>
+              <div class="block-label" data-i18n="lbl-built"></div>
+              <p data-i18n="c3-built"></p>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-sys-arch">System
-                Architecture</div>
+              <div class="block-label" data-i18n="lbl-sys-arch"></div>
               <div class="flow">
                 <div class="flow-row">
-                  <div class="flow-node">Admin Login + OTP</div>
+                  <div class="flow-node" data-i18n="c3-arch-flow1"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">Generate Key</div>
+                  <div class="flow-node" data-i18n="c3-arch-flow2"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">Export CSV/Excel/PDF</div>
+                  <div class="flow-node" data-i18n="c3-arch-flow3"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">Deliver to Client</div>
+                  <div class="flow-node" data-i18n="c3-arch-flow4"></div>
                 </div>
               </div>
               <div class="flow-spacer"></div>
               <div class="flow">
                 <div class="flow-row">
-                  <div class="flow-node">Client installs app</div>
+                  <div class="flow-node" data-i18n="c3-arch-flow5"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">App startup</div>
+                  <div class="flow-node" data-i18n="c3-arch-flow6"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">Middleware validates</div>
+                  <div class="flow-node" data-i18n="c3-arch-flow7"></div>
                   <div class="flow-arrow">→</div>
-                  <div class="flow-node">Allow / Block</div>
+                  <div class="flow-node" data-i18n="c3-arch-flow8"></div>
                 </div>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="c3-featureset">License
-                Generator App — Feature Set</div>
+              <div class="block-label" data-i18n="c3-featureset"></div>
               <div class="stack">
-                <span class="badge">Login + OTP 2FA</span>
-                <span class="badge">Generate license key</span>
-                <span class="badge">View / detail per license</span>
-                <span class="badge">Notes per client</span>
-                <span class="badge">Delete license</span>
-                <span class="badge">Export CSV</span>
-                <span class="badge">Export Excel</span>
-                <span class="badge">Export PDF</span>
-                <span class="badge">Print license</span>
-                <span class="badge">User management</span>
-                <span class="badge">Activity log</span>
-                <span class="badge">Online user monitoring</span>
-                <span class="badge">Password key generator</span>
+                <span class="badge" data-i18n="c3-feat1"></span>
+                <span class="badge" data-i18n="c3-feat2"></span>
+                <span class="badge" data-i18n="c3-feat3"></span>
+                <span class="badge" data-i18n="c3-feat4"></span>
+                <span class="badge" data-i18n="c3-feat5"></span>
+                <span class="badge" data-i18n="c3-feat6"></span>
+                <span class="badge" data-i18n="c3-feat7"></span>
+                <span class="badge" data-i18n="c3-feat8"></span>
+                <span class="badge" data-i18n="c3-feat9"></span>
+                <span class="badge" data-i18n="c3-feat10"></span>
+                <span class="badge" data-i18n="c3-feat11"></span>
+                <span class="badge" data-i18n="c3-feat12"></span>
+                <span class="badge" data-i18n="c3-feat13"></span>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-challenge">Key
-                Challenge</div>
+              <div class="block-label" data-i18n="lbl-challenge"></div>
               <div class="challenge-box">
-                <p data-i18n="c3-challenge">The license key must be
-                  <strong>client-specific and non-transferable</strong> — a key
-                  for Client A cannot work on Client B's machine. Solved by
-                  encoding device/client-specific parameters into the key,
-                  verified by the middleware on every app launch. The generator
-                  app itself is additionally secured with <strong>OTP two-factor
-                    authentication</strong>.</p>
+                <p data-i18n="c3-challenge"></p>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-stack">Tech Stack</div>
+              <div class="block-label" data-i18n="lbl-stack"></div>
               <div class="stack">
-                <span class="badge">PHP / Laravel</span>
-                <span class="badge">Middleware</span>
-                <span class="badge">OTP / 2FA</span>
-                <span class="badge">Key Encoding / Hashing</span>
-                <span class="badge">Device Fingerprinting</span>
-                <span class="badge">Export (CSV / Excel / PDF)</span>
+                <span class="badge" data-i18n="c3-badge1"></span>
+                <span class="badge" data-i18n="c3-badge2"></span>
+                <span class="badge" data-i18n="c3-badge3"></span>
+                <span class="badge" data-i18n="c3-badge4"></span>
+                <span class="badge" data-i18n="c3-badge5"></span>
+                <span class="badge" data-i18n="c3-badge6"></span>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-result">Result</div>
+              <div class="block-label" data-i18n="lbl-result"></div>
               <div class="metrics">
                 <div class="metric">
-                  <div class="metric-value">2</div>
-                  <div class="metric-label" data-i18n="m3-1">Separate apps:
-                    Generator + Verifier middleware</div>
+                  <div class="metric-value" data-i18n="m3-val1"></div>
+                  <div class="metric-label" data-i18n="m3-1"></div>
                 </div>
                 <div class="metric">
-                  <div class="metric-value">Per-client</div>
-                  <div class="metric-label" data-i18n="m3-2">Unique,
-                    non-transferable license keys</div>
+                  <div class="metric-value" data-i18n="m3-val2"></div>
+                  <div class="metric-label" data-i18n="m3-2"></div>
                 </div>
                 <div class="metric">
-                  <div class="metric-value">3</div>
-                  <div class="metric-label" data-i18n="m3-3">Export formats:
-                    CSV, Excel, PDF</div>
+                  <div class="metric-value" data-i18n="m3-val3"></div>
+                  <div class="metric-label" data-i18n="m3-3"></div>
                 </div>
               </div>
             </div>
-
           </div>
         </section>
 
         <hr class="divider">
 
-        <!-- ══ CASE 04 — HYBRID DESKTOP ═════════════════════════════════════════ -->
-        <section class="case c4" id="desktop">
+        <!-- ══ CASE 04 — OBFUSCATION ════════════════════════════════════════════ -->
+        <section class="case c4" id="obfuscation">
           <div class="case-header">
             <span class="case-number">04</span>
             <div class="case-title-wrap">
-              <div class="case-label" data-i18n="c4-label">Software
-                Architecture</div>
-              <h2 class="case-title">Web App →<br>Hybrid Desktop Packaging</h2>
+              <div class="case-label" data-i18n="c4-label"></div>
+              <h2 class="case-title" data-i18n="c4-title"></h2>
             </div>
           </div>
           <div class="case-body">
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-problem">Problem</div>
-              <p data-i18n="c4-problem">Clients needed to run POS and Accounting
-                software in locations with unreliable or no internet access. The
-                application was built as a web app (Laravel), but clients
-                expected a traditional desktop installation experience — not a
-                local server setup. Additionally, each installed copy needed to
-                be license-controlled.</p>
+              <div class="block-label" data-i18n="lbl-problem"></div>
+              <p data-i18n="c5-problem"></p>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-built">What I Built</div>
-              <p data-i18n="c4-built">A hybrid packaging pipeline that bundles
-                the Laravel web application, a local PHP server (Laragon-based),
-                and the database into a single Windows installer (.exe). Each
-                installer ships with an embedded license middleware. Clients
-                install it like any desktop app: double-click, next, finish.</p>
+              <div class="block-label" data-i18n="lbl-built"></div>
+              <p data-i18n="c5-built"></p>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-pkg-pipeline">Packaging
-                Pipeline</div>
-              <div class="flow">
-                <div class="flow-row">
-                  <div class="flow-node">Laravel App</div>
-                  <div class="flow-arrow">+</div>
-                  <div class="flow-node">PHP Runtime</div>
-                  <div class="flow-arrow">+</div>
-                  <div class="flow-node">SQLite/MySQL</div>
-                  <div class="flow-arrow">+</div>
-                  <div class="flow-node">License Middleware</div>
-                  <div class="flow-arrow">→</div>
-                  <div class="flow-node">PHPExeDesktop</div>
-                  <div class="flow-arrow">→</div>
-                  <div class="flow-node">InnoSetup .exe</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="block">
-              <div class="block-label" data-i18n="lbl-license-flow">License Flow
-                Inside Desktop App</div>
-              <div class="flow">
-                <div class="flow-row">
-                  <div class="flow-node">App launched</div>
-                  <div class="flow-arrow">→</div>
-                  <div class="flow-node">Middleware runs</div>
-                  <div class="flow-arrow">→</div>
-                  <div class="flow-node">Read license key file</div>
-                  <div class="flow-arrow">→</div>
-                  <div class="flow-node">Validate against device</div>
-                  <div class="flow-arrow">→</div>
-                  <div class="flow-node">Allow / Block</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="block">
-              <div class="block-label" data-i18n="lbl-challenge">Key
-                Challenge</div>
-              <div class="challenge-box">
-                <p data-i18n="c4-challenge">Managing <strong>4 product
-                    modules</strong> (Basic, Full, Retail, Manufacturing) each
-                  with different feature sets, database schemas, and license
-                  tiers — all needing independent installers without code
-                  duplication. Solved with a shared core codebase, module-level
-                  feature flags, and separate DB migration sets per module.</p>
-              </div>
-            </div>
-
-            <div class="block">
-              <div class="block-label" data-i18n="lbl-stack">Tech Stack</div>
+              <div class="block-label" data-i18n="c5-lbl-layers"></div>
               <div class="stack">
-                <span class="badge">PHP / Laravel</span>
-                <span class="badge">PHPExeDesktop</span>
-                <span class="badge">InnoSetup</span>
-                <span class="badge">SQLite</span>
-                <span class="badge">MySQL</span>
-                <span class="badge">License Middleware</span>
-                <span class="badge">Feature Flags</span>
-                <span class="badge">DB Migrations per Module</span>
+                <span class="badge" data-i18n="c5-layer1"></span>
+                <span class="badge" data-i18n="c5-layer2"></span>
+                <span class="badge" data-i18n="c5-layer3"></span>
+                <span class="badge" data-i18n="c5-layer4"></span>
+                <span class="badge" data-i18n="c5-layer5"></span>
+                <span class="badge" data-i18n="c5-layer6"></span>
               </div>
             </div>
-
             <div class="block">
-              <div class="block-label" data-i18n="lbl-result">Result</div>
+              <div class="block-label" data-i18n="lbl-flow"></div>
+              <div class="flow">
+                <div class="flow-row">
+                  <div class="flow-node" data-i18n="c5-flow1"></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" data-i18n="c5-flow2"></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" data-i18n="c5-flow3"></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" data-i18n="c5-flow4"></div>
+                </div>
+              </div>
+            </div>
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-challenge"></div>
+              <div class="challenge-box">
+                <p data-i18n="c5-challenge"></p>
+              </div>
+            </div>
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-stack"></div>
+              <div class="stack">
+                <span class="badge" data-i18n="c5-badge1"></span>
+                <span class="badge" data-i18n="c5-badge2"></span>
+                <span class="badge" data-i18n="c5-badge3"></span>
+                <span class="badge" data-i18n="c5-badge4"></span>
+                <span class="badge" data-i18n="c5-badge5"></span>
+              </div>
+            </div>
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-result"></div>
               <div class="metrics">
                 <div class="metric">
-                  <div class="metric-value">4</div>
-                  <div class="metric-label" data-i18n="m4-1">Independent
-                    installers, one per product module</div>
+                  <div class="metric-value" data-i18n="m4-val1"></div>
+                  <div class="metric-label" data-i18n="m5-1"></div>
                 </div>
                 <div class="metric">
-                  <div class="metric-value">Offline</div>
-                  <div class="metric-label" data-i18n="m4-2">Fully operational
-                    without internet connection</div>
+                  <div class="metric-value" data-i18n="m4-val2"></div>
+                  <div class="metric-label" data-i18n="m5-2"></div>
                 </div>
                 <div class="metric">
-                  <div class="metric-value">Locked</div>
-                  <div class="metric-label" data-i18n="m4-3">Each copy tied to a
-                    specific client device</div>
+                  <div class="metric-value" data-i18n="m4-val3"></div>
+                  <div class="metric-label" data-i18n="m5-3"></div>
                 </div>
               </div>
             </div>
+          </div>
+        </section>
 
+        <hr class="divider">
+
+        <!-- ══ CASE 05 — HYBRID DESKTOP ═════════════════════════════════════════ -->
+        <section class="case c5" id="desktop">
+          <div class="case-header">
+            <span class="case-number">05</span>
+            <div class="case-title-wrap">
+              <div class="case-label" data-i18n="c5-label"></div>
+              <h2 class="case-title" data-i18n="c5-title"></h2>
+            </div>
+          </div>
+          <div class="case-body">
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-problem"></div>
+              <p data-i18n="c4-problem"></p>
+            </div>
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-built"></div>
+              <p data-i18n="c4-built"></p>
+            </div>
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-pkg-pipeline"></div>
+              <div class="flow">
+                <div class="flow-row">
+                  <div class="flow-node" data-i18n="c5-pkg1"></div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-node" data-i18n="c5-pkg2"></div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-node" data-i18n="c5-pkg3"></div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-node" data-i18n="c5-pkg4"></div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-node" data-i18n="c5-pkg5"></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" data-i18n="c5-pkg6"></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" data-i18n="c5-pkg7"></div>
+                </div>
+              </div>
+            </div>
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-license-flow"></div>
+              <div class="flow">
+                <div class="flow-row">
+                  <div class="flow-node" data-i18n="c5-lic1"></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" data-i18n="c5-lic2"></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" data-i18n="c5-lic3"></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" data-i18n="c5-lic4"></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-node" data-i18n="c5-lic5"></div>
+                </div>
+              </div>
+            </div>
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-challenge"></div>
+              <div class="challenge-box">
+                <p data-i18n="c4-challenge"></p>
+              </div>
+            </div>
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-stack"></div>
+              <div class="stack">
+                <span class="badge" data-i18n="c4-badge1"></span>
+                <span class="badge" data-i18n="c4-badge2"></span>
+                <span class="badge" data-i18n="c4-badge3"></span>
+                <span class="badge" data-i18n="c4-badge4"></span>
+                <span class="badge" data-i18n="c4-badge5"></span>
+                <span class="badge" data-i18n="c4-badge6"></span>
+                <span class="badge" data-i18n="c4-badge7"></span>
+                <span class="badge" data-i18n="c4-badge8"></span>
+                <span class="badge" data-i18n="c4-badge9"></span>
+              </div>
+            </div>
+            <div class="block">
+              <div class="block-label" data-i18n="lbl-result"></div>
+              <div class="metrics">
+                <div class="metric">
+                  <div class="metric-value" data-i18n="m5-val1"></div>
+                  <div class="metric-label" data-i18n="m4-1"></div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value" data-i18n="m5-val2"></div>
+                  <div class="metric-label" data-i18n="m4-2"></div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value" data-i18n="m5-val3"></div>
+                  <div class="metric-label" data-i18n="m4-3"></div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -607,46 +589,44 @@
             <span class="section-num">SA</span>
             <div>
               <div class="section-label sa-section-label"
-                data-i18n="sa-label">System Analyst Portfolio</div>
-              <h2 class="section-title" data-i18n="sa-title">Analysis &amp;
-                Design Projects</h2>
-              <p class="section-sub" data-i18n="sa-subtitle">Requirement
-                analysis, system design, UML modeling, and digital solution
-                blueprinting for various business domains.</p>
+                data-i18n="sa-label"></div>
+              <h2 class="section-title" data-i18n="sa-title"></h2>
+              <p class="section-sub" data-i18n="sa-subtitle"></p>
             </div>
           </div>
-
           <div class="sa-list">
 
             <!-- SA Card 01 -->
             <div class="sa-card sa-card--purple">
               <div class="sa-card__header">
                 <div>
-                  <div class="sa-card__label" data-i18n="sa1-label">Project 01 ·
-                    Internship — PT. Jasamarga Related Business</div>
-                  <div class="sa-card__title" data-i18n="sa1-title">Digital Ad
-                    Booking System</div>
+                  <div class="sa-card__label" data-i18n="sa1-label"></div>
+                  <div class="sa-card__title" data-i18n="sa1-title"></div>
                 </div>
-                <span class="sa-card__badge">Web Platform</span>
+                <span class="sa-card__badge" data-i18n="sa1-badge"></span>
               </div>
-              <p class="sa-card__desc" data-i18n="sa1-desc">A digital platform
-                for booking and managing advertising slots for PT. Jasa Marga
-                Related Business. Automates the booking process, price
-                negotiation, survey scheduling, and online payment that were
-                previously handled manually.</p>
+              <p class="sa-card__desc" data-i18n="sa1-desc"></p>
               <div class="sa-card__feats">
-                <span class="sa-card__feat">Self-service Ad Booking</span>
-                <span class="sa-card__feat">Survey Scheduling</span>
-                <span class="sa-card__feat">Price Negotiation</span>
-                <span class="sa-card__feat">Online Payment</span>
-                <span class="sa-card__feat">Live Chat Admin</span>
-                <span class="sa-card__feat">Q&amp;A Forum</span>
+                <span class="sa-card__feat" data-i18n="sa1-feat1"></span>
+                <span class="sa-card__feat" data-i18n="sa1-feat2"></span>
+                <span class="sa-card__feat" data-i18n="sa1-feat3"></span>
+                <span class="sa-card__feat" data-i18n="sa1-feat4"></span>
+                <span class="sa-card__feat" data-i18n="sa1-feat5"></span>
+                <span class="sa-card__feat" data-i18n="sa1-feat6"></span>
               </div>
               <div class="sa-card__meta">
-                <span>&#128196; UML Diagrams</span>
-                <span>&#128196; ERD</span>
-                <span>&#127912; Figma UI/UX</span>
-                <span>&#128736; PHP/Laravel</span>
+                <span><i data-lucide="git-branch"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa1-meta1"></span></span>
+                <span><i data-lucide="table-2"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa1-meta2"></span></span>
+                <span><i data-lucide="figma"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa1-meta3"></span></span>
+                <span><i data-lucide="code-2"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa1-meta4"></span></span>
               </div>
             </div>
 
@@ -654,28 +634,28 @@
             <div class="sa-card sa-card--green">
               <div class="sa-card__header">
                 <div>
-                  <div class="sa-card__label" data-i18n="sa2-label">Project 02 ·
-                    Doc District</div>
-                  <div class="sa-card__title" data-i18n="sa2-title">Village
-                    Document Submission System</div>
+                  <div class="sa-card__label" data-i18n="sa2-label"></div>
+                  <div class="sa-card__title" data-i18n="sa2-title"></div>
                 </div>
-                <span class="sa-card__badge">E-Government</span>
+                <span class="sa-card__badge" data-i18n="sa2-badge"></span>
               </div>
-              <p class="sa-card__desc" data-i18n="sa2-desc">A digital platform
-                for online submission of official village documents. Replaces
-                slow manual processes, allows residents to submit documents from
-                anywhere, and provides real-time status tracking to reduce
-                village staff workload.</p>
+              <p class="sa-card__desc" data-i18n="sa2-desc"></p>
               <div class="sa-card__feats">
-                <span class="sa-card__feat">Online Submission</span>
-                <span class="sa-card__feat">Real-time Status Tracking</span>
-                <span class="sa-card__feat">Document Management</span>
-                <span class="sa-card__feat">Info Portal</span>
+                <span class="sa-card__feat" data-i18n="sa2-feat1"></span>
+                <span class="sa-card__feat" data-i18n="sa2-feat2"></span>
+                <span class="sa-card__feat" data-i18n="sa2-feat3"></span>
+                <span class="sa-card__feat" data-i18n="sa2-feat4"></span>
               </div>
               <div class="sa-card__meta">
-                <span>&#128196; System Requirements</span>
-                <span>&#128196; UML Diagrams</span>
-                <span>&#127912; Wireframe</span>
+                <span><i data-lucide="file-text"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa2-meta1"></span></span>
+                <span><i data-lucide="git-branch"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa2-meta2"></span></span>
+                <span><i data-lucide="layout"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa2-meta3"></span></span>
               </div>
             </div>
 
@@ -683,29 +663,29 @@
             <div class="sa-card sa-card--yellow">
               <div class="sa-card__header">
                 <div>
-                  <div class="sa-card__label" data-i18n="sa3-label">Project 03 ·
-                    Elaeis — PT. Inti Indosawit Subur</div>
-                  <div class="sa-card__title" data-i18n="sa3-title">Palm Oil
-                    E-Commerce System</div>
+                  <div class="sa-card__label" data-i18n="sa3-label"></div>
+                  <div class="sa-card__title" data-i18n="sa3-title"></div>
                 </div>
-                <span class="sa-card__badge">E-Commerce</span>
+                <span class="sa-card__badge" data-i18n="sa3-badge"></span>
               </div>
-              <p class="sa-card__desc" data-i18n="sa3-desc">A B2B e-commerce
-                platform for selling palm oil products from PT. Inti Indosawit
-                Subur. Expands market reach online with a complete product
-                catalog, multi-payment methods, real-time order tracking, and a
-                sales analytics dashboard.</p>
+              <p class="sa-card__desc" data-i18n="sa3-desc"></p>
               <div class="sa-card__feats">
-                <span class="sa-card__feat">Product Catalog</span>
-                <span class="sa-card__feat">Shopping Cart</span>
-                <span class="sa-card__feat">Multi-payment</span>
-                <span class="sa-card__feat">Order Tracking</span>
-                <span class="sa-card__feat">Sales Analytics</span>
+                <span class="sa-card__feat" data-i18n="sa3-feat1"></span>
+                <span class="sa-card__feat" data-i18n="sa3-feat2"></span>
+                <span class="sa-card__feat" data-i18n="sa3-feat3"></span>
+                <span class="sa-card__feat" data-i18n="sa3-feat4"></span>
+                <span class="sa-card__feat" data-i18n="sa3-feat5"></span>
               </div>
               <div class="sa-card__meta">
-                <span>&#128196; Business Requirements</span>
-                <span>&#128196; ERD</span>
-                <span>&#127912; UI Design</span>
+                <span><i data-lucide="file-text"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa3-meta1"></span></span>
+                <span><i data-lucide="table-2"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa3-meta2"></span></span>
+                <span><i data-lucide="pen-tool"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                    data-i18n="sa3-meta3"></span></span>
               </div>
             </div>
 
@@ -713,112 +693,115 @@
             <div class="sa-card sa-card--pink">
               <div class="sa-card__header">
                 <div>
-                  <div class="sa-card__label" data-i18n="sa4-label">Project 04 ·
-                    Final Project — Telkom University</div>
-                  <div class="sa-card__title" data-i18n="sa4-title">Babagi
-                    Travel — Umrah Travel Agency Crowdsourcing</div>
+                  <div class="sa-card__label" data-i18n="sa4-label"></div>
+                  <div class="sa-card__title" data-i18n="sa4-title"></div>
                 </div>
-                <span class="sa-card__badge">Crowdsourcing</span>
+                <span class="sa-card__badge" data-i18n="sa4-badge"></span>
               </div>
-              <p class="sa-card__desc" data-i18n="sa4-desc">A crowdsourcing app
-                to help prospective Umrah pilgrims choose trusted travel
-                agencies from thousands of listings registered in the Ministry
-                of Religious Affairs' SIMPU database. Features integrated data
-                verification via the Kemenag API, package comparison, and
-                community reviews. Developed using the Iterative Incremental
-                method — focused on the Verification Module.</p>
+              <p class="sa-card__desc" data-i18n="sa4-desc"></p>
               <div class="sa-card__feats">
-                <span class="sa-card__feat" data-i18n="sa4-feat1">SIMPU Kemenag
-                  Verification</span>
-                <span class="sa-card__feat">Package Comparison</span>
-                <span class="sa-card__feat">Review System</span>
-                <span class="sa-card__feat">Document Verification</span>
-                <span class="sa-card__feat">Travel Registration</span>
+                <span class="sa-card__feat" data-i18n="sa4-feat1"></span>
+                <span class="sa-card__feat" data-i18n="sa4-feat2"></span>
+                <span class="sa-card__feat" data-i18n="sa4-feat3"></span>
+                <span class="sa-card__feat" data-i18n="sa4-feat4"></span>
+                <span class="sa-card__feat" data-i18n="sa4-feat5"></span>
               </div>
               <div class="sa-card__footer">
                 <div class="sa-card__meta">
-                  <span>&#128196; Iterative Incremental Method</span>
-                  <span>&#128196; UML Diagrams</span>
-                  <span>&#127912; Figma</span>
+                  <span><i data-lucide="refresh-cw"
+                      style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                      data-i18n="sa4-meta1"></span></span>
+                  <span><i data-lucide="git-branch"
+                      style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                      data-i18n="sa4-meta2"></span></span>
+                  <span><i data-lucide="figma"
+                      style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i><span
+                      data-i18n="sa4-meta3"></span></span>
                 </div>
                 <a
                   href="https://drive.google.com/drive/folders/1x9OoRcKJd_ROL3LBcFxqNqrdwLxVhBLb"
-                  target="_blank" class="sa-card__link"
-                  data-i18n="sa4-docs">&#128193; Full Docs &#8599;</a>
+                  target="_blank" class="sa-card__link" data-i18n="sa4-docs"
+                  data-tooltip="tip-sa4-docs">
+                  <i data-lucide="folder-open"
+                    style="width:12px;height:12px;display:inline-block;vertical-align:middle;margin-right:4px;"></i>
+                </a>
               </div>
             </div>
 
             <div>
               <a
                 href="https://drive.google.com/drive/folders/1x9OoRcKJd_ROL3LBcFxqNqrdwLxVhBLb"
-                target="_blank" class="link-btn primary"
-                data-i18n="sa-gdrive">📁 View Full System Analyst Portfolio on
-                Google Drive ↗</a>
+                target="_blank" class="link-btn primary" data-i18n="sa-gdrive"
+                data-tooltip="tip-sa-gdrive">
+                <i data-lucide="folder-open"
+                  style="width:14px;height:14px;"></i>
+              </a>
             </div>
 
           </div>
         </section>
 
-        <hr class="divider divider--top">
-
         <!-- ══ CONNECT ══════════════════════════════════════════════════════════ -->
         <section class="connect-section" id="connect">
-          <div class="connect-label" data-i18n="connect-label">Connect</div>
-          <h2 class="connect-title" data-i18n="connect-title">Get in Touch</h2>
+          <div class="connect-label" data-i18n="connect-label"></div>
+          <h2 class="connect-title" data-i18n="connect-title"></h2>
           <div class="connect-grid">
-
             <a href="https://www.linkedin.com/in/subagja-eric-dallan-5723811b9/"
-              target="_blank" class="connect-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path
-                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" /></svg>
-              LinkedIn
+              target="_blank" class="connect-btn"
+              data-tooltip="tip-connect-linkedin">
+              <i data-lucide="linkedin"
+                style="width:16px;height:16px;flex-shrink:0;"></i>
+              <span data-i18n="connect-linkedin"></span>
             </a>
-
             <a href="https://github.com/ericdallan" target="_blank"
-              class="connect-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path
-                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" /></svg>
-              GitHub
+              class="connect-btn" data-tooltip="tip-connect-github">
+              <i data-lucide="github"
+                style="width:16px;height:16px;flex-shrink:0;"></i>
+              <span data-i18n="connect-github"></span>
             </a>
-
-            <a href="mailto:ericsubagja66@gmail.com" class="connect-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path
-                  d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.9.732-1.636 1.636-1.636h.91L12 10.09l9.455-6.27h.909A1.636 1.636 0 0 1 24 5.457z" /></svg>
+            <a href="mailto:ericsubagja66@gmail.com" class="connect-btn"
+              data-tooltip="tip-connect-email">
+              <i data-lucide="mail"
+                style="width:16px;height:16px;flex-shrink:0;"></i>
               ericsubagja66@gmail.com
             </a>
-
             <a
               href="https://drive.google.com/drive/folders/1x9OoRcKJd_ROL3LBcFxqNqrdwLxVhBLb"
-              target="_blank" class="connect-btn">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path
-                  d="M4.433 22.396l2.888-5.002H22.04l-2.89 5.002H4.433zM1.96 18.004L7.73 8.004l2.887 5-5.77 9.996-2.887-4.996zM10.617 8.004h11.54l-5.77 9.998h-11.54l5.77-9.998z" /></svg>
-              <span data-i18n="connect-gdrive">System Analyst Portfolio</span>
+              target="_blank" class="connect-btn"
+              data-tooltip="tip-connect-gdrive">
+              <i data-lucide="folder-open"
+                style="width:16px;height:16px;flex-shrink:0;"></i>
+              <span data-i18n="connect-gdrive"></span>
             </a>
-
             <a href="https://inniakundigi.co.id" target="_blank"
-              class="connect-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2"><circle cx="12" cy="12" r="10" /><line x1="2"
-                  y1="12" x2="22" y2="12" /><path
-                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
-              <span data-i18n="connect-company">Company Profile</span>
+              class="connect-btn" data-tooltip="tip-connect-company">
+              <i data-lucide="globe"
+                style="width:16px;height:16px;flex-shrink:0;"></i>
+              <span data-i18n="connect-company"></span>
             </a>
-
           </div>
         </section>
 
       </main>
 
       <footer>
-        <p data-i18n="footer">© 2025 Subagja Eric Dallan · Cianjur, Jawa Barat,
-          Indonesia</p>
+        <p data-i18n="footer"></p>
       </footer>
 
     </div>
 
-    <!-- Scripts: translations first, then main logic -->
-    <script src="js/translations.js"></script>
-    <script src="js/main.js"></script>
+    <!-- ══ BACK TO TOP ═══════════════════════════════════════════════════════════ -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+      <i data-lucide="arrow-up" style="width:18px;height:18px;"></i>
+    </button>
+
+    <script src="js/translations.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        if (typeof lucide !== "undefined") lucide.createIcons();
+      });
+    </script>
 
   </body>
 </html>
